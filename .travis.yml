@@ -22,13 +22,11 @@ matrix:
     - php: 7.0
       env: WP_VERSION=latest
     - php: 5.6
-      env: WP_VERSION=4.4
+      env: WP_VERSION=4.6.4
     - php: 5.6
       env: WP_VERSION=latest
     - php: 5.6
       env: WP_VERSION=trunk
-    - php: 5.6
-      env: WP_TRAVISCI=phpcs
     - php: 5.3
       env: WP_VERSION=latest
 
@@ -43,19 +41,10 @@ before_script:
         composer global require "phpunit/phpunit=4.8.*"
       fi
     fi
-  - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      composer global require wp-coding-standards/wpcs
-      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
-    fi
 
 script:
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
       phpunit
       WP_MULTISITE=1 phpunit
-    fi
-  - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      phpcs --standard=phpcs.ruleset.xml $(find . -name '*.php')
     fi
