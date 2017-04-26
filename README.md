@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/bu-ist/wp-unit-tests-essentials.svg?branch=master)](https://travis-ci.org/bu-ist/wp-unit-tests-essentials)
+[![Travis CI Build Status](https://travis-ci.org/bu-ist/wp-unit-tests-essentials.svg?branch=master)](https://travis-ci.org/bu-ist/wp-unit-tests-essentials)
+[![CircleCI](https://circleci.com/gh/bu-ist/sample-plugin.svg?style=shield)](https://circleci.com/gh/bu-ist/sample-plugin)
 ## Running Tests
 1. Download https://github.com/bu-ist/wp-unit-tests-essentials/archive/master.zip
 2. Copy everything but README & sample-plugin.php into your plugin/theme.
