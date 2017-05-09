@@ -2,7 +2,7 @@
 [![CircleCI](https://circleci.com/gh/bu-ist/sample-plugin.svg?style=shield)](https://circleci.com/gh/bu-ist/sample-plugin)
 ## Running Tests
 1. Download https://github.com/bu-ist/sample-plugin/archive/master.zip
-2. Copy everything but README & sample-plugin.php into your plugin/theme.
+2. Copy everything (don't forget about hidden dot files like .travis.yml) into your plugin/theme except the following:  `README.md`, `sample-plugin.php`, `.git`, `.gitignore`.
 3. Update settings in the `tests/bootstrap.php` file to reflect your plugin/theme.
 4. Write tests.
 5. If this is not the first run,cleanup from the files and database from prior runs:
