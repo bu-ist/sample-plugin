@@ -6,15 +6,27 @@
 1. Update settings in the `tests/bootstrap.php` file to reflect your plugin/theme.
 1. Write tests.
 ## Running tests locally in docker
-1. Run the wpdc up command to initialize and setup docker containers
+#### Requirements
+It requires docker and docker-compose to be installed in your machine.
+
+You can download it here https://www.docker.com/community-edition#/download.
+
+Note: docker-compose comes with Docker for Mac and Docker for Windows. On linux you need to install docker-compose separately.
+
+#### Steps
+1. Go to the plugin/theme directory
+	```
+	cd /path/to/plugin
+	```
+1. Run the [wpdc up](#up) command to initialize and setup docker containers
 	```
 	bash bin/wpdc.sh up
 	```
-1. Run the wpdc test command to run phpunit (as long as the containers are running, you can edit your files and run this command as many times as you want)
+1. Run the [wpdc test](#test) command to run phpunit (as long as the containers are running, you can edit your files and run this command as many times as you want)
 	```
 	bash bin/wpdc.sh test
 	```
-1. Run the wpdc down command to stop and remove containers
+1. Run the [wpdc down](down) command to stop and remove containers
 	```
 	bash bin/wpdc.sh down
 	```
