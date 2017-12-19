@@ -1,39 +1,62 @@
 [![Travis CI Build Status](https://travis-ci.org/bu-ist/sample-plugin.svg?branch=master)](https://travis-ci.org/bu-ist/sample-plugin)
 [![CircleCI](https://circleci.com/gh/bu-ist/sample-plugin.svg?style=shield)](https://circleci.com/gh/bu-ist/sample-plugin)
-## Running Tests
+## Adding CI tests to existing plugin/theme
 1. Download https://github.com/bu-ist/sample-plugin/archive/master.zip
-2. Copy everything (don't forget about hidden dot files like .travis.yml) into your plugin/theme except the following:  `README.md`, `sample-plugin.php`, `.git`, `.gitignore`.
-3. Update settings in the `tests/bootstrap.php` file to reflect your plugin/theme.
-4. Write tests.
-5. If this is not the first run,cleanup from the files and database from prior runs:
+1. Copy everything (don't forget about hidden dot files like .travis.yml) into your plugin/theme except the following:  `README.md`, `sample-plugin.php`, `.git`, `.gitignore`.
+1. Update settings in the `tests/bootstrap.php` file to reflect your plugin/theme.
+1. Write tests.
+## Running tests locally in docker
+1. Run the wpdc up command to initialize and setup docker containers
 	```
-    ls /tmp/wordpress*
-    rm -fr /tmp/wordpress*
-    echo "drop database wordpress_test" | mysql -u root
+	bash bin/wpdc.sh up
 	```
-
-6. Install WP tests:
+1. Run the wpdc test command to run phpunit (as long as the containers are running, you can edit your files and run this command as many times as you want)
 	```
-    bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
+	bash bin/wpdc.sh test
 	```
-
-7. Run phpunit in the plugin’s root directory
-
+1. Run the wpdc down command to stop and remove containers
 	```
-    phpunit
+	bash bin/wpdc.sh down
 	```
 
-## Trouble Shooting
-
-If you run into problems with the `phpunit` command reporting that it's unable to connect to your database, it could be the case that php is tying to use a socket that isn't available. This can happen when you installed mysql with homebrew, while using the default php installation on OSX. To debug this a issue, run the following commands to figure out which socket php is trying to use, and which socket your mysql server is using.
-
+## bin/wpdc.sh commands
+### `up`
+Starts docker containers and sets up WordPress testing environment so that we can use the test command.
+##### Usage
 ```
-php -i | fgrep 'mysql.default_socket'
-mysql -e 'show variables where variable_name = "socket"'
+bash bin/wpdc.sh up [php-version] [wp-version]
 ```
+It takes 2 optional arguments:
+1. `[php-version]`
+	
+	The php version we want to test. Normally a 2 digit version like `5.6`, `7.0`, `7.1`. It defaults to latest (which at the moment resolves to `7.1` but can change in the future).
+1. `[wp-version]`
 
-One potential fix for this specific scenario is to symlink the php default socket to the one used by the homebrew's mysql server.
+	The WordPress version we want to test. It can be a 1, 2 or 3 digit version like: `4`, `4.9`, `4.7.3`. It defaults to latest.
 
+##### Examples
 ```
-sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+bash bin/wpdc.sh up
+bash bin/wpdc.sh up latest
+bash bin/wpdc.sh up latest latest
+bash bin/wpdc.sh up 7.0
+bash bin/wpdc.sh up 7.0 latest
+bash bin/wpdc.sh up latest 4.6
+bash bin/wpdc.sh up 7.1-apache 4.7
+bash bin/wpdc.sh up latest 4.8
+bash bin/wpdc.sh up 5.6 4.3
 ```
+### `down`
+Stops and removes everything created with the up command.
+##### Usage
+```
+bash bin/wpdc.sh down
+```
+It takes no arguments.
+### `test`
+Runs the phpunit tests inside the docker container.
+##### Usage
+```
+bash bin/wpdc.sh test
+```
+It takes no arguments.
