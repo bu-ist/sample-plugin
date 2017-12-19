@@ -19,7 +19,7 @@ spin_up() {
   fi
   export WPDC_IMAGE_TAG
   
-  set -e;
+  set -e
   # Remove any existing containers and volumes
   spin_down
   # Start docker containers. Pass in the WPDC_PHP_VERSION env variable to the docker-compose command.
@@ -41,6 +41,7 @@ spin_up() {
 
 # Run phpunit in container
 run_phpunit(){
+  set -e
   printf "Running single site tests\n\n"
   docker-compose exec wptest bash -c "WP_MULTISITE=0 phpunit --exclude-group=ms-required"
   printf "Running multisite tests\n\n"
