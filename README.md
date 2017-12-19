@@ -14,19 +14,19 @@ You can download it here https://www.docker.com/community-edition#/download.
 Note: docker-compose comes with Docker for Mac and Docker for Windows. On linux you need to install docker-compose separately.
 
 #### Steps
-1. Go to the plugin/theme directory
+1. Go to the plugin/theme directory.
 	```
 	cd /path/to/plugin
 	```
-1. Run the [wpdc up](#up) command to initialize and setup docker containers
+1. Run the [wpdc up](#up) command to initialize and setup docker containers.
 	```
 	bash bin/wpdc.sh up
 	```
-1. Run the [wpdc test](#test) command to run phpunit (as long as the containers are running, you can edit your files and run this command as many times as you want)
+1. Run the [wpdc test](#test) command to run phpunit (as long as the containers are running, you can edit your files and run this command as many times as you want).
 	```
 	bash bin/wpdc.sh test
 	```
-1. Run the [wpdc down](#down) command to stop and remove containers
+1. Run the [wpdc down](#down) command to stop and remove containers when you are done testing.
 	```
 	bash bin/wpdc.sh down
 	```
