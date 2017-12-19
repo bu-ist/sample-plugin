@@ -26,7 +26,7 @@ Note: docker-compose comes with Docker for Mac and Docker for Windows. On linux 
 	```
 	bash bin/wpdc.sh test
 	```
-1. Run the [wpdc down](down) command to stop and remove containers
+1. Run the [wpdc down](#down) command to stop and remove containers
 	```
 	bash bin/wpdc.sh down
 	```
