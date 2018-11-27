@@ -1,0 +1,47 @@
+---
+version: 2
+prepare:
+  fetch:
+    - "https://raw.githubusercontent.com/bu-ist/coding-standards/master/code-climate-rule-sets/.mdlrc"
+    - "https://raw.githubusercontent.com/bu-ist/coding-standards/master/code-climate-rule-sets/markdown.rb"
+    - url: "https://raw.githubusercontent.com/bu-ist/coding-standards/master/code-climate-rule-sets/phpcs-plugins.xml"
+      path: "phpcs.xml"
+plugins:
+  csslint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - javascript
+        - php
+  eslint:
+    enabled: false
+    channel: eslint-3
+  fixme:
+    enabled: true
+  markdownlint:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: php
+      standard: phpcs.xml.dist
+      ignore_warnings: false
+      encoding: utf-8
+  phpmd:
+    enabled: true
+    config:
+      file_extensions: php
+      rulesets: codesize,naming,unusedcode
+  scss-lint:
+    enabled: false
+exclude_patterns:
+  - bower_components/
+  - languages/
+  - node_modules/
+  - .sass-cache/
+  - tests/
+  - "*.min.css"
+  - "*.min.js"
+  - "**.css"

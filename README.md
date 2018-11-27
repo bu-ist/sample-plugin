@@ -37,3 +37,45 @@ One potential fix for this specific scenario is to symlink the php default socke
 ```
 sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 ```
+
+## Running Code Climate locally
+
+To run Code Climate reports locally, it must be installed on your machine.
+Directions to install locally are on the Code Climate GitHub repository
+https://github.com/codeclimate/codeclimate/.
+
+The easiest way to install the `codeclimate` command is with the homebrew
+package manager. [Install homebrew before continuing](https://brew.sh/).
+Otherwise, continue on to the next step.
+
+In a Terminal session, run the following commands:
+
+1. `brew tap codeclimate/formulae`
+1. `brew install codeclimate`
+
+Now you should have the `codeclimate` command available. Test it by running
+`codeclimate version`.
+
+A list of commands is available on the [Code Climate GitHub page](https://github.com/codeclimate/codeclimate/#commands).
+
+### Example commands
+
+The following commands can be run in the root of your repository:
+
+#### Analyze the entire repo
+
+```
+codeclimate analyze
+```
+
+#### Analyze just one file
+
+```
+codeclimate analyze includes/functions.php
+```
+
+#### Validate the contents of your codeclimate file
+
+```
+codeclimate validate-config
+```
