@@ -40,11 +40,22 @@ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
 ## Running Code Climate locally
 
+### Prerequisites
+
+Install the prerequisites listed on the [Code Climate repo](https://github.com/codeclimate/codeclimate/#prerequisites).
+
+- [Docker](https://www.docker.com/), or use [Docker for Mac](https://docs.docker.com/docker-for-mac/) for macOS.
+- [Homebrew](https://brew.sh/) (only if on macOS)
+
+### Installation
+
 To run Code Climate reports locally, it must be installed on your machine.
 Directions to install locally are on the Code Climate GitHub repository
 https://github.com/codeclimate/codeclimate/.
 
-The easiest way to install the `codeclimate` command is with the homebrew
+
+#### For macOS
+The easiest way to install the `codeclimate` command on macOS is with the homebrew
 package manager. [Install homebrew before continuing](https://brew.sh/).
 Otherwise, continue on to the next step.
 
@@ -53,14 +64,20 @@ In a Terminal session, run the following commands:
 1. `brew tap codeclimate/formulae`
 1. `brew install codeclimate`
 
+#### Alternative Approach
+
+If on Windows or another operating system, run the following commands:
+
+1. `curl -L https://github.com/codeclimate/codeclimate/archive/master.tar.gz | tar xvz`
+1. `cd codeclimate-* && sudo make install`
+
+### Example commands
+
 Now you should have the `codeclimate` command available. Test it by running
 `codeclimate version`.
 
 A list of commands is available on the [Code Climate GitHub page](https://github.com/codeclimate/codeclimate/#commands).
-
-### Example commands
-
-The following commands can be run in the root of your repository:
+The following commands can be run in the root of your repository:o
 
 #### Analyze the entire repo
 
