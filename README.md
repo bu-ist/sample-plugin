@@ -77,7 +77,7 @@ Now you should have the `codeclimate` command available. Test it by running
 `codeclimate version`.
 
 A list of commands is available on the [Code Climate GitHub page](https://github.com/codeclimate/codeclimate/#commands).
-The following commands can be run in the root of your repository:o
+The following commands can be run in the root of your repository:
 
 #### Analyze the entire repo
 
