@@ -42,20 +42,24 @@ sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
 ### Prerequisites
 
-Install the prerequisites listed on the [Code Climate repo](https://github.com/codeclimate/codeclimate/#prerequisites).
+To run code climate locally, grab an existing plugin or theme's .codeclimate.yml file:
+
+- For plugins, use the one from the [sample plugin repo](https://github.com/bu-ist/sample-plugin/blob/master/.codeclimate.yml).
+- For themes, use the one from the [responsive framework's child-starter](https://github.com/bu-ist/responsive-child-starter/blob/develop/.codeclimate.yml).
+
+Next, follow the instructions listed on the [Code Climate repo](https://github.com/codeclimate/codeclimate/#prerequisites), or continue by installing the prerequisites that are listed:
 
 - [Docker](https://www.docker.com/), or use [Docker for Mac](https://docs.docker.com/docker-for-mac/) for macOS.
 - [Homebrew](https://brew.sh/) (only if on macOS)
 
 ### Installation
 
-To run Code Climate reports locally, it must be installed on your machine.
-Directions to install locally are on the Code Climate GitHub repository
-https://github.com/codeclimate/codeclimate/.
+_Note: All of this information is available on the [Code Climate repo](https://github.com/codeclimate/codeclimate/). To continue, make sure you have [Docker](https://www.docker.com/), or [Docker for Mac](https://docs.docker.com/docker-for-mac/) for macOS._
 
-_Note: Make sure you have [Docker](https://www.docker.com/), or use [Docker for Mac](https://docs.docker.com/docker-for-mac/) for macOS._
+To run Code Climate reports locally, the Docker image must be installed on your machine.
 
-Run the following command in a Terminal session:
+Run the following command in a Terminal session to pull down the Docker image:
+
 ```
 docker pull codeclimate/codeclimate
 ```
@@ -73,10 +77,10 @@ docker run \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --volume /tmp/cc:/tmp/cc \
   codeclimate/codeclimate help
-  ```
+```
 
-  But since that's a burden to type each time, it is preferred to use Code
-  Climate's wrapper scripts.
+But since that's a burden to type each time, it is preferred to use Code
+Climate's wrapper scripts.
 
 
 #### Installing wrapper script For macOS using Homebrew
