@@ -53,8 +53,33 @@ To run Code Climate reports locally, it must be installed on your machine.
 Directions to install locally are on the Code Climate GitHub repository
 https://github.com/codeclimate/codeclimate/.
 
+_Note: Make sure you have [Docker](https://www.docker.com/), or use [Docker for Mac](https://docs.docker.com/docker-for-mac/) for macOS._
 
-#### For macOS
+Run the following command in a Terminal session:
+```
+docker pull codeclimate/codeclimate
+```
+
+This will download the Docker image that code climate will use to run its
+analysis tools.
+
+After that finishes, code climate can now be run using the following example
+command:
+```
+docker run \
+  --interactive --tty --rm \
+  --env CODECLIMATE_CODE="$PWD" \
+  --volume "$PWD":/code \
+  --volume /var/run/docker.sock:/var/run/docker.sock \
+  --volume /tmp/cc:/tmp/cc \
+  codeclimate/codeclimate help
+  ```
+
+  But since that's a burden to type each time, it is preferred to use Code
+  Climate's wrapper scripts.
+
+
+#### Installing wrapper script For macOS using Homebrew
 The easiest way to install the `codeclimate` command on macOS is with the homebrew
 package manager. [Install homebrew before continuing](https://brew.sh/).
 Otherwise, continue on to the next step.
@@ -64,7 +89,7 @@ In a Terminal session, run the following commands:
 1. `brew tap codeclimate/formulae`
 1. `brew install codeclimate`
 
-#### Alternative Approach
+#### Installing wrapper script for any operating system (Windows, Linux, etc)
 
 If on Windows or another operating system, run the following commands:
 
@@ -73,8 +98,8 @@ If on Windows or another operating system, run the following commands:
 
 ### Example commands
 
-Now you should have the `codeclimate` command available. Test it by running
-`codeclimate version`.
+If using the wrapper scripts, the `codeclimate` command should be available.
+Test it by running `codeclimate version`.
 
 A list of commands is available on the [Code Climate GitHub page](https://github.com/codeclimate/codeclimate/#commands).
 The following commands can be run in the root of your repository:
