@@ -5,3 +5,7 @@ node_modules/
 *.sql
 *.tar.gz
 *.zip
+
+# Ignore files downloaded from codeclimate prepare fetch key, defined in .codeclimate.yml
+markdown.rb
+.mdlrc
