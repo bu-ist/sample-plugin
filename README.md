@@ -82,8 +82,8 @@ docker run \
 But since that's a burden to type each time, it is preferred to use Code
 Climate's wrapper scripts.
 
+#### Install script for macOS using Homebrew
 
-#### Installing wrapper script For macOS using Homebrew
 The easiest way to install the `codeclimate` command on macOS is with the homebrew
 package manager. [Install homebrew before continuing](https://brew.sh/).
 Otherwise, continue on to the next step.
@@ -93,7 +93,7 @@ In a Terminal session, run the following commands:
 1. `brew tap codeclimate/formulae`
 1. `brew install codeclimate`
 
-#### Installing wrapper script for any operating system (Windows, Linux, etc)
+#### Install script for any os (Windows, Linux, etc)
 
 If on Windows or another operating system, run the following commands:
 
