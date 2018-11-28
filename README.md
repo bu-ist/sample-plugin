@@ -160,3 +160,48 @@ codeclimate analyze includes/functions.php
 ```
 codeclimate validate-config
 ```
+### Code Climate Troubleshooting
+
+You can debug and modify how your commands run by adding additional
+flags. See the [Code Climate repo](https://github.com/codeclimate/codeclimate#environment-variables)
+for official definitions of each flag. As an overview, these are the following
+known flags:
+
+#### Run codeclimate in debug mode:
+
+```
+CODECLIMATE_DEBUG=1 codeclimate analyze
+```
+
+Prints additional information about the analysis steps, including any stderr produced by engines.
+
+#### Increase timeout
+
+To increase the amount of time each engine container may run (default 15 min):
+
+```
+# 30 minutes
+CONTAINER_TIMEOUT_SECONDS=1800 codeclimate analyze
+```
+
+#### Increase memory
+You can also configure the default alotted memory with which each engine runs (default is 1,024,000,000 bytes):
+
+```
+# 2,000,000,000 bytes
+ENGINE_MEMORY_LIMIT_BYTES=2000000000 codeclimate analyze
+```
+
+#### The analyze script is taking forever to run
+
+This could be due to a variety of factors:
+
+- It could be hanging up on installing engines. Try running
+`codeclimate engines:install` first, before running `codeclimate analyze`
+- There are a very large number of files in your repository that Code Climate
+  is trying to analyze at once. Be sure to specify all files and directories you
+  want Code Climate to skip using the `exclude_patterns` key in the yaml config
+  file.
+- It could be hanging up on some assets that its trying to download in the
+  `prepare` > `fetch` key in the yaml config file. Make sure the repos are all
+  public.
